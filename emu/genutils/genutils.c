@@ -150,34 +150,12 @@ char strTemp[1000];
 a1 = picat_get_call_arg(1, 2);
 a2 = picat_get_call_arg(2, 2);
 
-picat_write_term(a2);
-//name_ptr = a2; // picat_get_atom_name(a2);
 name_ptr = bp_term_2_string(a2);
-printf("characters : ");
-for (int i = 0; i < strlen(name_ptr); i++) {
-	printf("%c ", name_ptr[i]);
-}	
-
-printf("name_ptr : %s", name_ptr);
-sprintf(strTemp, "%s", name_ptr);
-printf("strTemp : %s",strTemp);
 strfiltercopy(name_ptr, strFinal);
-printf("strFinal : %s",strFinal);
-
-/*
-int status = system(strFinal);
-int exitcode = status;
-f12 = picat_build_float(exitcode);
-s1 = picat_build_atom("exitcode");
-// return picat_unify(a1, f12);
-return picat_unify(a1, s1);
-*/
 exec(strResult, strFinal);
 s1 = picat_build_atom(strResult);
+	
 return picat_unify(a1, s1);
-
-//return PICAT_TRUE;
-
 
 }
 
